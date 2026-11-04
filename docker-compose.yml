@@ -1,0 +1,18 @@
+# Base de données locale pour le développement
+# Démarrer : docker compose up -d
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: digiga-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: digiga
+      POSTGRES_PASSWORD: digiga_dev
+      POSTGRES_DB: digiga
+    ports:
+      - "5433:5432"
+    volumes:
+      - digiga-pgdata:/var/lib/postgresql/data
+
+volumes:
+  digiga-pgdata:
