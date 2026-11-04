@@ -4,6 +4,7 @@ import { count, isNull } from "drizzle-orm";
 import { Sidebar } from "@/components/layout/sidebar";
 import { CommandPalette } from "@/components/capture/command-palette";
 import { OptionsProvider } from "@/components/options-provider";
+import { themeInitScript } from "@/components/theme";
 import { getOptions } from "@/db/queries";
 import { db } from "@/db";
 import { inboxItems } from "@/db/schema";
@@ -19,7 +20,12 @@ export const metadata: Metadata = {
   description: "Mon second cerveau : projets, tâches, notes, CRM et objectifs (méthode PARA).",
 };
 
-export const viewport: Viewport = { themeColor: "#0a0a0a" };
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
+};
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const [options, [inbox]] = await Promise.all([
@@ -28,8 +34,11 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
   ]);
 
   return (
-    <html lang="fr" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body className="font-sans antialiased">
+    <html lang="fr" className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
+      <body className="bg-background font-sans text-foreground antialiased">
         <OptionsProvider value={options}>
           <div className="flex min-h-dvh flex-col md:flex-row">
             <Sidebar inboxCount={inbox.n} />

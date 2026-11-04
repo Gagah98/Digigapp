@@ -128,3 +128,20 @@
     @apply font-sans;
   }
 }
+/* Éditeur BlockNote : mêmes couleurs que le reste de l'app (clair et sombre) */
+/* (sélecteur renforcé pour passer devant le thème sombre de BlockNote, chargé après) */
+.bn-root.bn-container[data-color-scheme] {
+  --bn-colors-editor-background: var(--background);
+  --bn-colors-editor-text: var(--foreground);
+  --bn-colors-menu-background: var(--popover);
+  --bn-colors-menu-text: var(--popover-foreground);
+  --bn-colors-tooltip-background: var(--popover);
+  --bn-colors-tooltip-text: var(--popover-foreground);
+  --bn-colors-hovered-background: var(--muted);
+  --bn-colors-hovered-text: var(--foreground);
+  --bn-colors-selected-background: var(--accent);
+  --bn-colors-selected-text: var(--accent-foreground);
+  --bn-colors-side-menu: var(--muted-foreground);
+  --bn-colors-border: var(--border);
+  --bn-font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}

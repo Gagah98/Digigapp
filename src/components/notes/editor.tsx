@@ -18,6 +18,7 @@ import {
 } from "@blocknote/react";
 import { BlockNoteView } from "@blocknote/mantine";
 import { search, updateNote, type LinkRef } from "@/app/actions";
+import { useIsDark } from "@/components/theme";
 
 const typeEmoji: Record<string, string> = { project: "📁", task: "☑️", note: "📝", area: "🗂️" };
 
@@ -85,15 +86,8 @@ function analyse(doc: Doc) {
 export default function NoteEditor({ noteId, initialContent }: { noteId: string; initialContent: unknown }) {
   const [status, setStatus] = useState<"saved" | "saving" | "dirty">("saved");
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const [dark, setDark] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
-    setDark(mq.matches);
-    const on = (e: MediaQueryListEvent) => setDark(e.matches);
-    mq.addEventListener("change", on);
-    return () => mq.removeEventListener("change", on);
-  }, []);
+  // Suit le thème choisi dans l'app (et non directement celui du système)
+  const dark = useIsDark();
 
   const content = useMemo(
     () => (Array.isArray(initialContent) && initialContent.length ? (initialContent as PartialBlock[]) : undefined),

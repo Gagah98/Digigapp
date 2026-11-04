@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Menu, X, Brain, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { navSections } from "./nav";
+import { ThemeToggle } from "@/components/theme";
 
 export function Sidebar({ inboxCount = 0 }: { inboxCount?: number }) {
   const pathname = usePathname();
@@ -70,6 +71,9 @@ export function Sidebar({ inboxCount = 0 }: { inboxCount?: number }) {
             </ul>
           </div>
         ))}
+        <div className="px-1 pt-2">
+          <ThemeToggle />
+        </div>
       </nav>
     </aside>
   );
