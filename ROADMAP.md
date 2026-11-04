@@ -104,22 +104,26 @@ inbox          id, contenu brut, source (web|mobile|mail|IA), traité
 > Durées indicatives pour un développement en solo, à temps partiel, avec l'aide de l'IA (Claude Code).
 
 ### Phase 0 — Fondations (1 à 2 semaines)
-- [ ] Repo Git + projet Next.js + Tailwind + shadcn/ui
-- [ ] PostgreSQL via Docker en local, Drizzle, premières migrations
-- [ ] Authentification (toi seul)
-- [ ] Mise en page : barre latérale PARA (Inbox, Aujourd'hui, Projets, Aires, Ressources, Archives, CRM, Objectifs)
-- [ ] VPS + Coolify + domaine + HTTPS + sauvegardes automatiques
+- [x] Repo Git + projet Next.js + Tailwind + shadcn/ui
+- [x] PostgreSQL via Docker en local, Drizzle, premières migrations
+- [ ] Authentification (toi seul) → avant la mise en ligne sur le VPS
+- [x] Mise en page : barre latérale PARA (Inbox, Aujourd'hui, Projets, Aires, Ressources, Archives, CRM, Objectifs)
+- [ ] VPS + Coolify + domaine + HTTPS + sauvegardes automatiques → au moment de la mise en ligne
 - **Livrable :** l'app est en ligne, vide mais sécurisée et sauvegardée.
 
 ### Phase 1 — Le cœur PARA : MVP (3 à 5 semaines) ⭐
-- [ ] **Aires et projets** : création, statut, échéance, archivage en un clic
-- [ ] **Tâches** : sous-tâches, échéance, date prévue, priorité, tâches récurrentes
-- [ ] **Notes** : éditeur par blocs BlockNote, liens `[[...]]` vers n'importe quel élément, rétroliens
-- [ ] **Inbox et capture rapide** : `Ctrl+K` pour une note ou une tâche depuis n'importe où, avec une syntaxe naturelle (`Appeler Marc demain #client !haute`)
-- [ ] **Vues** : liste, **Kanban** (par statut ou priorité), tableau
-- [ ] **Vue « Aujourd'hui »** : tâches du jour, en retard, à venir
-- [ ] **Recherche globale** (plein texte PostgreSQL) et palette de commandes
-- [ ] Tags, favoris, glisser-déposer
+- [x] **Aires et projets** : création, statut, échéance, archivage en un clic
+- [x] **Tâches** : échéance, date prévue, priorité, estimation, tâches récurrentes
+- [ ] Sous-tâches (le champ existe en base, l'interface reste à faire)
+- [x] **Notes** : éditeur par blocs BlockNote (en français), mentions `@` vers n'importe quel élément, rétroliens
+- [x] **Inbox et capture rapide** : `Ctrl+K` pour une note ou une tâche depuis n'importe où, avec une syntaxe naturelle (`Appeler Marc demain #client !haute`)
+- [x] **Vues** : liste et **Kanban** par statut
+- [ ] Vue tableau (colonnes triables), Kanban par priorité
+- [x] **Vue « Aujourd'hui »** : tâches du jour, en retard, à venir
+- [x] **Recherche globale** (titres, tâches, contenu des notes) et palette de commandes `Ctrl+K`
+- [ ] Recherche plein texte PostgreSQL (accents, pertinence) quand le volume grandira
+- [x] Tags (via #tag dans la saisie rapide), glisser-déposer Kanban
+- [ ] Favoris, gestion des tags (renommer/couleurs) → à faire
 - **Livrable :** tu peux quitter Notion et Obsidian pour tes tâches et tes notes.
 
 ### Phase 2 — Modèles et productivité (2 semaines)

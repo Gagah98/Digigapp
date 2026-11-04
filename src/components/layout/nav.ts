@@ -1,5 +1,5 @@
 import {
-  Inbox, Sun, FolderKanban, Layers, BookOpen, Archive, Users, Target, CalendarDays, LayoutDashboard,
+  Inbox, Sun, FolderKanban, Layers, BookOpen, Archive, Users, Target, CalendarDays, LayoutDashboard, FileText,
   type LucideIcon,
 } from "lucide-react";
 
@@ -13,6 +13,7 @@ export const navSections: NavSection[] = [
       { href: "/", label: "Tableau de bord", icon: LayoutDashboard },
       { href: "/inbox", label: "Inbox", icon: Inbox },
       { href: "/today", label: "Aujourd'hui", icon: Sun },
+      { href: "/notes", label: "Notes", icon: FileText },
     ],
   },
   {

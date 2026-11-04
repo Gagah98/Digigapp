@@ -3,11 +3,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu, X, Brain } from "lucide-react";
+import { Menu, X, Brain, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { navSections } from "./nav";
 
-export function Sidebar() {
+export function Sidebar({ inboxCount = 0 }: { inboxCount?: number }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
@@ -29,6 +29,16 @@ export function Sidebar() {
       </div>
 
       <nav className={cn("space-y-5 px-2 pb-4", open ? "block" : "hidden md:block")}>
+        <button
+          onClick={() => {
+            setOpen(false);
+            window.dispatchEvent(new Event("digiga:capture"));
+          }}
+          className="flex w-full items-center gap-2 rounded-lg border bg-background px-2.5 py-1.5 text-sm text-muted-foreground shadow-xs hover:text-foreground"
+        >
+          <Plus className="size-4" /> Capture rapide
+          <kbd className="ml-auto rounded border px-1 font-mono text-[10px]">Ctrl K</kbd>
+        </button>
         {navSections.map((section, i) => (
           <div key={i}>
             {section.title && (
@@ -49,6 +59,11 @@ export function Sidebar() {
                   >
                     <Icon className="size-4 text-muted-foreground" />
                     {label}
+                    {href === "/inbox" && inboxCount > 0 && (
+                      <span className="ml-auto rounded-full bg-primary px-1.5 text-[11px] font-medium tabular-nums text-primary-foreground">
+                        {inboxCount}
+                      </span>
+                    )}
                   </Link>
                 </li>
               ))}
